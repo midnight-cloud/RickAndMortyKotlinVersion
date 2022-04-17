@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Rick &amp; Morty Characters wiki</string>
+    <string name="example_text">Example</string>
+    <string name="app_labeel">Rick and Morty characterOnes wiki</string>
+    <string name="buttonBack">Назад</string>
+    <string name="btnPrev">Назад</string>
+    <string name="btnNext">Вперед</string>
+    <string name="btnListOfEpisodes">Список эпизодов</string>
+    <string name="labelStatus">Статус:</string>
+    <string name="labelName">Имя:</string>
+    <string name="labelRace">Раса:</string>
+    <string name="labelGender">Пол:</string>
+    <string name="labelEpisodes">Появлений в эпизодах:</string>
+    <string name="labelLocation">Место:</string>
+    <string name="labelType">Вид:</string>
+    <string name="imageCharImage">Character Image</string>
+    <string name="download_error">Download error</string>
+    <string name="reload">reload</string>
+</resources>
