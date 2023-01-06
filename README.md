@@ -1,6 +1,11 @@
 # Rick_and_Morty_wiki
 ![ic_launcher_foreground](https://user-images.githubusercontent.com/86518548/156780596-af1db0c0-4bce-4e16-899f-fc87eed8c8c5.png)
 
+**version 0.2.1**
+```
+Переход на чистую архитектуру (layers, usecases, repository)
+```
+
 **version 0.2**
 ```
 Замена livedata на stateflow
