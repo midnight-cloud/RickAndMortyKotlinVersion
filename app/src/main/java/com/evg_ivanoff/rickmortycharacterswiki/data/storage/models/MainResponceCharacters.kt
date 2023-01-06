@@ -1,4 +1,4 @@
-package com.evg_ivanoff.rickmortycharacterswiki.pojo.character
+package com.evg_ivanoff.rickmortycharacterswiki.data.storage.models
 
 import com.google.gson.annotations.Expose
 

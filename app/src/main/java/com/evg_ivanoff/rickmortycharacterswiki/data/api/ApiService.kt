@@ -1,7 +1,7 @@
-package com.evg_ivanoff.rickmortycharacterswiki.api
+package com.evg_ivanoff.rickmortycharacterswiki.data.api
 
-import com.evg_ivanoff.rickmortycharacterswiki.pojo.character.Character
-import com.evg_ivanoff.rickmortycharacterswiki.pojo.character.MainResponceCharacters
+import com.evg_ivanoff.rickmortycharacterswiki.data.storage.models.Character
+import com.evg_ivanoff.rickmortycharacterswiki.data.storage.models.MainResponceCharacters
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path

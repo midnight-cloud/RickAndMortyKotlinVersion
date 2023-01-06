@@ -1,4 +1,4 @@
-package com.evg_ivanoff.rickmortycharacterswiki.screens
+package com.evg_ivanoff.rickmortycharacterswiki.presenter
 
 import android.content.Context
 import android.content.Intent
@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.evg_ivanoff.rickmortycharacterswiki.databinding.ActivityCharInfoBinding
-import com.evg_ivanoff.rickmortycharacterswiki.screens.viewmodels.CharacterViewModel
+import com.evg_ivanoff.rickmortycharacterswiki.presenter.viewmodels.CharacterViewModel
 import com.squareup.picasso.Picasso
 
 class CharInfoActivity : AppCompatActivity() {

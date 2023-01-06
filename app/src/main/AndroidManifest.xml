@@ -11,11 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.RickMortyCharactersWiki">
         <activity
-            android:name=".screens.CharInfoActivity"
+            android:name=".presenter.CharInfoActivity"
             android:exported="false"
-            android:parentActivityName=".screens.MainActivity"/>
+            android:parentActivityName=".presenter.MainActivity"/>
         <activity
-            android:name=".screens.MainActivity"
+            android:name=".presenter.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,4 +1,4 @@
-package com.evg_ivanoff.rickmortycharacterswiki.api
+package com.evg_ivanoff.rickmortycharacterswiki.data.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
