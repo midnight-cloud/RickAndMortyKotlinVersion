@@ -1,19 +1,21 @@
-package com.evg_ivanoff.rickmortycharacterswiki.screens
+package com.evg_ivanoff.rickmortycharacterswiki.presenter
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.evg_ivanoff.rickmortycharacterswiki.databinding.ActivityMainBinding
-import com.evg_ivanoff.rickmortycharacterswiki.screens.adapters.MainCharacterAdapter
-import com.evg_ivanoff.rickmortycharacterswiki.screens.viewmodels.CharactersAllViewModel
+import com.evg_ivanoff.rickmortycharacterswiki.presenter.adapters.MainCharacterAdapter
+import com.evg_ivanoff.rickmortycharacterswiki.presenter.viewmodels.CharactersAllViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel by lazy {
-        ViewModelProvider(this)[CharactersAllViewModel::class.java]
-    }
+    //    private val viewModel by lazy {
+//        ViewModelProvider(this)[CharactersAllViewModel::class.java]
+//    }
+    private val viewModel: CharactersAllViewModel by viewModels()
+
     private var nextPage: Int? = 2
     private var prevPage: Int? = null
     private val adapter = MainCharacterAdapter()
