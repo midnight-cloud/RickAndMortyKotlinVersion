@@ -39,4 +39,5 @@ class CharactersAllViewModel : ViewModel() {
             _liveData.value = getCharactersListByPageUsecase.execute(page)
         }
     }
+
 }

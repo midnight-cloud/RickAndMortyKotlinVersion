@@ -11,9 +11,6 @@ import com.evg_ivanoff.rickmortycharacterswiki.presenter.viewmodels.CharactersAl
 
 class MainActivity : AppCompatActivity() {
 
-    //    private val viewModel by lazy {
-//        ViewModelProvider(this)[CharactersAllViewModel::class.java]
-//    }
     private val viewModel: CharactersAllViewModel by viewModels()
 
     private var nextPage: Int? = 2
