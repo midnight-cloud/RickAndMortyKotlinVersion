@@ -7,23 +7,33 @@ import com.evg_ivanoff.rickmortycharacterswiki.domain.models.InfoModel
 import com.evg_ivanoff.rickmortycharacterswiki.domain.models.LocationModel
 import com.evg_ivanoff.rickmortycharacterswiki.domain.models.MainCharsModel
 import com.evg_ivanoff.rickmortycharacterswiki.domain.repository.CharacterRepo
+import retrofit2.HttpException
 import retrofit2.Response
 import com.evg_ivanoff.rickmortycharacterswiki.data.storage.models.Character as MyChar
 
 class CharacterRepoImpl(private val apiFactory: ApiFactory) : CharacterRepo {
     override suspend fun getCharList(): MainCharsModel {
-        val charList = apiFactory.apiService.getAllCharacters()
-        return mapToDomain(charList)
+        val apiResponce = apiFactory.apiService.getAllCharacters()
+        if (apiResponce.isSuccessful)
+            return mapToDomain(apiResponce)
+        else
+            throw HttpException(apiResponce)
     }
 
     override suspend fun getCharListByPage(page: Int): MainCharsModel {
-        val charList = apiFactory.apiService.getCharactersByPage(page)
-        return mapToDomain(charList)
+        val apiResponce = apiFactory.apiService.getCharactersByPage(page)
+        if (apiResponce.isSuccessful)
+            return mapToDomain(apiResponce)
+        else
+            throw HttpException(apiResponce)
     }
 
     override suspend fun getCharById(id: Int): CharacterModel {
-        val char = apiFactory.apiService.getCharacterById(id)
-        return mapToStorage(char)
+        val apiResponce = apiFactory.apiService.getCharacterById(id)
+        if (apiResponce.isSuccessful)
+            return mapToStorage(apiResponce)
+        else
+            throw HttpException(apiResponce)
     }
 
     private fun mapToStorage(item: Response<MyChar>): CharacterModel {

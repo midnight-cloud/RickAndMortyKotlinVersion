@@ -2,15 +2,16 @@ package com.evg_ivanoff.rickmortycharacterswiki.presenter.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.evg_ivanoff.rickmortycharacterswiki.databinding.CharacterItemGridBinding
 import com.evg_ivanoff.rickmortycharacterswiki.domain.models.CharacterModel
 import com.squareup.picasso.Picasso
 
-class MainCharacterAdapter : ListAdapter<CharacterModel, MainCharacterAdapter.MainCharacterViewHolder>(
-    CharDiffCallback()
-) {
+class MainCharacterAdapter :
+    PagingDataAdapter<CharacterModel, MainCharacterAdapter.MainCharacterViewHolder>(
+        CharDiffCallback()
+    ) {
 
     var onCharClickListener: ((CharacterModel) -> Unit)? = null
 
@@ -34,7 +35,7 @@ class MainCharacterAdapter : ListAdapter<CharacterModel, MainCharacterAdapter.Ma
     }
 
     override fun onBindViewHolder(holder: MainCharacterViewHolder, position: Int) {
-        val char = currentList[position]
+        val char = getItem(position)!!
         holder.bindItems(char)
     }
 
