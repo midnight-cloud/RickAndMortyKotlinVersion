@@ -11,12 +11,12 @@ import com.evg_ivanoff.rickmortycharacterswiki.presenter.viewmodels.CharactersAl
 
 class MainActivity : AppCompatActivity() {
 
-    private val viewModel: CharactersAllViewModel by viewModels()
+    private val viewModel: CharactersAllViewModel by viewModels { CharactersAllViewModel.Factory }
 
     private var nextPage: Int? = 2
     private var prevPage: Int? = null
     private val adapter = MainCharacterAdapter()
-    private val binding by lazy {
+    private val binding by lazy(LazyThreadSafetyMode.NONE) {
         ActivityMainBinding.inflate(layoutInflater)
     }
 

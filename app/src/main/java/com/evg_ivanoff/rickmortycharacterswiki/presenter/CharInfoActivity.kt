@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 class CharInfoActivity : AppCompatActivity() {
 
     private val viewModel by lazy {
-        ViewModelProvider(this)[CharacterViewModel::class.java]
+        ViewModelProvider(this, CharacterViewModel.Factory)[CharacterViewModel::class.java]
     }
     private val binding by lazy {
         ActivityCharInfoBinding.inflate(layoutInflater)

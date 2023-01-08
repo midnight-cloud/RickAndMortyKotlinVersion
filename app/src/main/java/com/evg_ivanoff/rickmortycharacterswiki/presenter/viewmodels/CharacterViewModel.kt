@@ -1,7 +1,9 @@
 package com.evg_ivanoff.rickmortycharacterswiki.presenter.viewmodels
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
 import com.evg_ivanoff.rickmortycharacterswiki.data.api.ApiFactory
 import com.evg_ivanoff.rickmortycharacterswiki.data.repository.CharacterRepoImpl
 import com.evg_ivanoff.rickmortycharacterswiki.domain.models.CharacterModel
@@ -13,10 +15,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
-class CharacterViewModel(application: Application) : AndroidViewModel(application) {
+class CharacterViewModel(
+    private val getCharacterByIdUsecase: GetCharacterByIdUsecase
+) : ViewModel() {
 
-    private val charRepo by lazy { CharacterRepoImpl(ApiFactory) }
-    private val getCharacterByIdUsecase by lazy { GetCharacterByIdUsecase(charRepo) }
 
     private val initValue = CharacterModel(-1)
     private val _charSF = MutableStateFlow(initValue)
@@ -26,6 +28,18 @@ class CharacterViewModel(application: Application) : AndroidViewModel(applicatio
     fun initData(id: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             _charSF.value = getCharacterByIdUsecase.execute(id)
+        }
+    }
+
+    companion object {
+        val Factory: ViewModelProvider.Factory = viewModelFactory {
+            initializer {
+                val charRepo by lazy(LazyThreadSafetyMode.NONE) { CharacterRepoImpl(ApiFactory) }
+                val getCharacterByIdUsecase by lazy(LazyThreadSafetyMode.NONE) {
+                    GetCharacterByIdUsecase(charRepo)
+                }
+                CharacterViewModel(getCharacterByIdUsecase)
+            }
         }
     }
 }
