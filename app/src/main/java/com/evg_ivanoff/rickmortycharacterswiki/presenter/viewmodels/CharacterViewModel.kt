@@ -34,9 +34,15 @@ class CharacterViewModel(
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {
             initializer {
-                val charRepo by lazy(LazyThreadSafetyMode.NONE) { CharacterRepoImpl(ApiFactory) }
+                val charRepo by lazy(LazyThreadSafetyMode.NONE) {
+                    CharacterRepoImpl(
+                        ApiFactory
+                    )
+                }
                 val getCharacterByIdUsecase by lazy(LazyThreadSafetyMode.NONE) {
-                    GetCharacterByIdUsecase(charRepo)
+                    GetCharacterByIdUsecase(
+                        charRepo
+                    )
                 }
                 CharacterViewModel(getCharacterByIdUsecase)
             }
