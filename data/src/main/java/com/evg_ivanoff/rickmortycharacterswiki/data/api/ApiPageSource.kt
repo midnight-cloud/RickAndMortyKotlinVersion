@@ -13,7 +13,7 @@ class ApiPageSource : PagingSource<Int, CharacterModel>() {
         return page.prevKey?.plus(1) ?: page.nextKey?.minus(1)
     }
 
-    private val charRepo by lazy(LazyThreadSafetyMode.NONE) { CharacterRepoImpl(ApiFactory) }
+    private val charRepo by lazy(LazyThreadSafetyMode.NONE) { CharacterRepoImpl(ApiFactory.apiService) }
     private val getCharactersListByPageUsecase by lazy(LazyThreadSafetyMode.NONE) {
         GetCharactersListByPageUsecase(charRepo)
     }

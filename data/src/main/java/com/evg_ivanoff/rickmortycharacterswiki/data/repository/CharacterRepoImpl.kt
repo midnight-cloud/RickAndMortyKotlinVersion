@@ -1,6 +1,6 @@
 package com.evg_ivanoff.rickmortycharacterswiki.data.repository
 
-import com.evg_ivanoff.rickmortycharacterswiki.data.api.ApiFactory
+import com.evg_ivanoff.rickmortycharacterswiki.data.api.ApiService
 import com.evg_ivanoff.rickmortycharacterswiki.data.storage.models.MainResponceCharacters
 import com.evg_ivanoff.rickmortycharacterswiki.domain.models.CharacterModel
 import com.evg_ivanoff.rickmortycharacterswiki.domain.models.InfoModel
@@ -11,9 +11,9 @@ import retrofit2.HttpException
 import retrofit2.Response
 import com.evg_ivanoff.rickmortycharacterswiki.data.storage.models.Character as MyChar
 
-class CharacterRepoImpl(private val apiFactory: ApiFactory) : CharacterRepo {
+class CharacterRepoImpl(private val apiFactory: ApiService) : CharacterRepo {
     override suspend fun getCharList(): MainCharsModel {
-        val apiResponce = apiFactory.apiService.getAllCharacters()
+        val apiResponce = apiFactory.getAllCharacters()
         if (apiResponce.isSuccessful)
             return mapToDomain(apiResponce)
         else
@@ -21,7 +21,7 @@ class CharacterRepoImpl(private val apiFactory: ApiFactory) : CharacterRepo {
     }
 
     override suspend fun getCharListByPage(page: Int): MainCharsModel {
-        val apiResponce = apiFactory.apiService.getCharactersByPage(page)
+        val apiResponce = apiFactory.getCharactersByPage(page)
         if (apiResponce.isSuccessful)
             return mapToDomain(apiResponce)
         else
@@ -29,7 +29,7 @@ class CharacterRepoImpl(private val apiFactory: ApiFactory) : CharacterRepo {
     }
 
     override suspend fun getCharById(id: Int): CharacterModel {
-        val apiResponce = apiFactory.apiService.getCharacterById(id)
+        val apiResponce = apiFactory.getCharacterById(id)
         if (apiResponce.isSuccessful)
             return mapToStorage(apiResponce)
         else
