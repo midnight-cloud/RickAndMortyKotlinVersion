@@ -7,19 +7,27 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.evg_ivanoff.rickmortycharacterswiki.databinding.ActivityCharInfoBinding
+import com.evg_ivanoff.rickmortycharacterswiki.presenter.application.appComponent
 import com.evg_ivanoff.rickmortycharacterswiki.presenter.viewmodels.CharacterViewModel
+import com.evg_ivanoff.rickmortycharacterswiki.presenter.viewmodels.CharacterViewModelFactory
 import com.squareup.picasso.Picasso
+import javax.inject.Inject
 
 class CharInfoActivity : AppCompatActivity() {
 
+    @Inject
+    lateinit var characterViewModelFactory: CharacterViewModelFactory
+
     private val viewModel by lazy {
-        ViewModelProvider(this, CharacterViewModel.Factory)[CharacterViewModel::class.java]
+        ViewModelProvider(this, characterViewModelFactory)[CharacterViewModel::class.java]
     }
     private val binding by lazy {
         ActivityCharInfoBinding.inflate(layoutInflater)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        appComponent.inject(this)
+
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
