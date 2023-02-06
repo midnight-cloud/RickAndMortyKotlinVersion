@@ -2,9 +2,9 @@
 ![ic_launcher_foreground](https://user-images.githubusercontent.com/86518548/156780596-af1db0c0-4bce-4e16-899f-fc87eed8c8c5.png)
 
 
-**Last version 0.2.3**
+**Last version 0.2.4**
 ```
-Реализация di - dagger
+Перевод модели приложения на "single activity + fragments"
 ```
 
 ___
@@ -12,10 +12,15 @@ ___
 Доработки
 - при возвращении к списку нет сохранения предыдущей позиции списка
 - нет горизонтальной разметки
-- перевести на single activity + fragments
-- изменить дизайн
+- реализовать поиск
+- нет кнопки назад на детальном экране
 ```
 ___
+
+**version 0.2.4**
+```
+Перевод модели приложения на "single activity + fragments"
+```
 
 **version 0.2.3**
 ```
