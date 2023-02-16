@@ -2,11 +2,10 @@ package com.evg_ivanoff.rickmortycharacterswiki.presenter.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.evg_ivanoff.rickmortycharacterswiki.domain.models.CharacterModel
 import com.evg_ivanoff.rickmortycharacterswiki.domain.usecases.GetCharacterByIdUsecase
 import com.evg_ivanoff.rickmortycharacterswiki.presenter.di.ActivityScope
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -24,7 +23,7 @@ class CharacterViewModel(
     //asStateFlow() для readonly
 
     fun initData(id: Int) {
-        CoroutineScope(Dispatchers.IO).launch {
+        viewModelScope.launch {
             _charSF.value = getCharacterByIdUsecase.execute(id)
         }
     }
